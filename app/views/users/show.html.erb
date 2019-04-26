@@ -13,11 +13,16 @@
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
-<h3>Microposts:</h3>
-<ul>
-<% @user.microposts.each do |micropost| %>
-  <li>
-    <%= micropost.content %>
-  </li>
+<% if @user.microposts.length == 0 %>
+  <h3>No Microposts</h3>
+<% else %>
+  <h3>Microposts:</h3>
 <% end %>
+<ul>
+  <% @user.microposts.each do |micropost| %>
+    <li>
+      <%= micropost.content %>
+      <%= link_to 'Show', micropost %>
+    </li>
+  <% end %>
 </ul>
